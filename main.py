@@ -10,6 +10,7 @@ def main():
     uniform_rv = create_uniform_rv(n_values)
 
     uniform_rv.plot()
+    plt.show()
     uniform_rv.plot(a, b)
     plt.show()
 
