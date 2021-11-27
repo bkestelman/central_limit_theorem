@@ -1,9 +1,13 @@
+import argparse
 import copy
 import numpy as np
 from random_variable import IntegerRandomVariable
 from matplotlib import pyplot as plt
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--save', dest='save_prefix', help='filename prefix to save images')
+    args = parser.parse_args()
     # Create a uniform discrete random variable
     a, b = -1, 1
     n_values = 4 
@@ -37,6 +41,8 @@ def main():
     for i in range(iterations):
         plt.cla()
         sum_uniforms.plot()
+        if args.save_prefix:
+            plt.savefig(f'{args.save_prefix}_{i}')
         plt.pause(1)
         sum_uniforms = sum_uniforms + uniform_rv
     plt.show()
