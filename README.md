@@ -20,7 +20,10 @@ Adding up their possible values is actually a bit trickier than it sounds. We ne
 
 The problem is that after we remove duplicates, we sometimes get a list of sums that looks like [-2, -1, -1.1942847e-16, 0, 1, 2]. And if we inspect the original combinations, we see things like [(-1, -1), (-1, 0.333333337), (-1, 0.3333333326)...]. We could round every number down to a few decimals, but even this breaks after several iterations. 
 
-A more robust solution is to limit ourselves to integer random variables. This may sound restrictive, but it is easy to scale these values if we want to make plots with non-integer random variables. The important thing is that the internals for adding random variables only uses integers. Thus, the central class is IntegerRandomVariable. 
+A more robust solution is to limit ourselves to integer random variables. This may sound restrictive, but it is easy to scale these values if we want to make plots with non-integer random variables. The important thing is that the internals for adding random variables only uses integers. Thus, the central class is `IntegerRandomVariable`. 
 
 ## Scaling
 So far, I haven't implemented scaling, so the resultant distributions just keep getting bigger. Thankfully, matplotlib automatically scales it down for the chart, so the visualization looks as if it were scaled down anyways. 
+
+## Example and Experiments
+The example above adds random variables whose values are drawn from a uniform distribution. But the `IntegerRandomVariable` class allows specifying any probability distribution. It might be interesting to experiment with different distributions to see how quickly their sums converge to Gaussians. It may also be interesting to see what happens if we violate the I.I.D assumption. 
